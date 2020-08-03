@@ -1,11 +1,3 @@
-/*
- * Author : Rohit Shakya
- * Date   : April-2020
- *
- * Compiler : g++ 5.1.0
- * flags    : -std=c++14
- */
- 
 #include<bits/stdc++.h>
 using namespace std;
 int main()
@@ -25,15 +17,10 @@ int main()
 		{
 			char m='"';
 			myfile <<m;
-		}
-	
-		
+		}		
 	}
-
-  
   myfile.close();
-	cout<<endl;
-        
+	cout<<endl;   
 }
 
     

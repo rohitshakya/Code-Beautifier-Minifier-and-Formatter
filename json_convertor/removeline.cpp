@@ -1,7 +1,6 @@
 /*
  * Author : Rohit Shakya
  * Date   : April-2020
- *
  * Compiler : g++ 5.1.0
  * flags    : -std=c++14
  */
@@ -26,7 +25,7 @@ int main()
 	
 		myfile <<ch;
 	}
-  myfile.close();
+  	myfile.close();
 	cout<<endl;
 	//remove "" from the output by replace all command
         
