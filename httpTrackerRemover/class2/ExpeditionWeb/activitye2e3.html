@@ -1,0 +1,874 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=3&catId=1&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:32:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fe428e ! important;	
+}
+.round-section {
+    background: #b22e63 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["mcq","fib","rearwo"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">3.  The Cracked Pot</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=11</script>				<div class="first-div">
+				 <div class="fill-qu">
+				The old Chinese woman had				<!--span class="divLine" id="div5097" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5097"></span>
+				large pots.				<input type="hidden" id="ans_5097" value="two" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_50971" class="bounceInLeft animated">
+										<!--span id="drag50971"  draggable="true" onClick="dragtrue('50971')" ondragstart="drag(event)" >two</span-->
+					<span id="drag50971" onClick="dragtrue('50971', '5097')">two</span>
+										</li>	
+								    <li id="d_50972" class="bounceInLeft animated">
+										<span id="drag50972"  onClick="dragWrng(event)">three</span>
+										</li>	
+								    <li id="d_50973" class="bounceInLeft animated">
+										<span id="drag50973"  onClick="dragWrng(event)">four</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5097">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The old woman carried the pots by tying each one at the ends of a long				<!--span class="divLine" id="div5099" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5099"></span>
+				.				<input type="hidden" id="ans_5099" value="pole" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_50991" class="bounceInLeft animated">
+										<span id="drag50991"  onClick="dragWrng(event)">rod</span>
+										</li>	
+								    <li id="d_50992" class="bounceInLeft animated">
+										<!--span id="drag50992"  draggable="true" onClick="dragtrue('50992')" ondragstart="drag(event)" >pole</span-->
+					<span id="drag50992" onClick="dragtrue('50992', '5099')">pole</span>
+										</li>	
+								    <li id="d_50993" class="bounceInLeft animated">
+										<span id="drag50993"  onClick="dragWrng(event)">rope</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5099">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				One pot had a				<!--span class="divLine" id="div5101" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5101"></span>
+				in it.				<input type="hidden" id="ans_5101" value="crack" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51011" class="bounceInLeft animated">
+										<span id="drag51011"  onClick="dragWrng(event)">mark</span>
+										</li>	
+								    <li id="d_51012" class="bounceInLeft animated">
+										<!--span id="drag51012"  draggable="true" onClick="dragtrue('51012')" ondragstart="drag(event)" >crack</span-->
+					<span id="drag51012" onClick="dragtrue('51012', '5101')">crack</span>
+										</li>	
+								    <li id="d_51013" class="bounceInLeft animated">
+										<span id="drag51013"  onClick="dragWrng(event)">scar</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5101">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The other pot was only half full of				<!--span class="divLine" id="div5104" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5104"></span>
+				.				<input type="hidden" id="ans_5104" value="water" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51041" class="bounceInLeft animated">
+										<span id="drag51041"  onClick="dragWrng(event)">juice</span>
+										</li>	
+								    <li id="d_51042" class="bounceInLeft animated">
+										<!--span id="drag51042"  draggable="true" onClick="dragtrue('51042')" ondragstart="drag(event)" >water</span-->
+					<span id="drag51042" onClick="dragtrue('51042', '5104')">water</span>
+										</li>	
+								    <li id="d_51043" class="bounceInLeft animated">
+										<span id="drag51043"  onClick="dragWrng(event)">petrol</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5104">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The old woman brought home				<!--span class="divLine" id="div5108" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5108"></span>
+				pots of water.				<input type="hidden" id="ans_5108" value="one and a half" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51081" class="bounceInLeft animated">
+										<!--span id="drag51081"  draggable="true" onClick="dragtrue('51081')" ondragstart="drag(event)" >one and a half</span-->
+					<span id="drag51081" onClick="dragtrue('51081', '5108')">one and a half</span>
+										</li>	
+								    <li id="d_51082" class="bounceInLeft animated">
+										<span id="drag51082"  onClick="dragWrng(event)">three and a half</span>
+										</li>	
+								    <li id="d_51083" class="bounceInLeft animated">
+										<span id="drag51083"  onClick="dragWrng(event)">two and a half</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5108">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The perfect pot was				<!--span class="divLine" id="div5112" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5112"></span>
+				of its work.				<input type="hidden" id="ans_5112" value="proud" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51121" class="bounceInLeft animated">
+										<span id="drag51121"  onClick="dragWrng(event)">shameful</span>
+										</li>	
+								    <li id="d_51122" class="bounceInLeft animated">
+										<!--span id="drag51122"  draggable="true" onClick="dragtrue('51122')" ondragstart="drag(event)" >proud</span-->
+					<span id="drag51122" onClick="dragtrue('51122', '5112')">proud</span>
+										</li>	
+								    <li id="d_51123" class="bounceInLeft animated">
+										<span id="drag51123"  onClick="dragWrng(event)">afraid</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5112">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The cracked pot was				<!--span class="divLine" id="div5114" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5114"></span>
+				of its imperfection.				<input type="hidden" id="ans_5114" value="ashamed" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51141" class="bounceInLeft animated">
+										<!--span id="drag51141"  draggable="true" onClick="dragtrue('51141')" ondragstart="drag(event)" >ashamed</span-->
+					<span id="drag51141" onClick="dragtrue('51141', '5114')">ashamed</span>
+										</li>	
+								    <li id="d_51142" class="bounceInLeft animated">
+										<span id="drag51142"  onClick="dragWrng(event)">fearful</span>
+										</li>	
+								    <li id="d_51143" class="bounceInLeft animated">
+										<span id="drag51143"  onClick="dragWrng(event)">happy</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5114">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The				<!--span class="divLine" id="div5117" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5117"></span>
+				leaked out of the imperfect pot.				<input type="hidden" id="ans_5117" value="water" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51171" class="bounceInLeft animated">
+										<!--span id="drag51171"  draggable="true" onClick="dragtrue('51171')" ondragstart="drag(event)" >water</span-->
+					<span id="drag51171" onClick="dragtrue('51171', '5117')">water</span>
+										</li>	
+								    <li id="d_51172" class="bounceInLeft animated">
+										<span id="drag51172"  onClick="dragWrng(event)">rice</span>
+										</li>	
+								    <li id="d_51173" class="bounceInLeft animated">
+										<span id="drag51173"  onClick="dragWrng(event)">juice</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5117">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The old woman planted				<!--span class="divLine" id="div5120" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5120"></span>
+				seeds on the side of the imperfect pot.				<input type="hidden" id="ans_5120" value="flower" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51201" class="bounceInLeft animated">
+										<span id="drag51201"  onClick="dragWrng(event)">vegetable</span>
+										</li>	
+								    <li id="d_51202" class="bounceInLeft animated">
+										<!--span id="drag51202"  draggable="true" onClick="dragtrue('51202')" ondragstart="drag(event)" >flower</span-->
+					<span id="drag51202" onClick="dragtrue('51202', '5120')">flower</span>
+										</li>	
+								    <li id="d_51203" class="bounceInLeft animated">
+										<span id="drag51203"  onClick="dragWrng(event)">fruit</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5120">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The old woman decorated her house with				<!--span class="divLine" id="div5121" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5121"></span>
+				.				<input type="hidden" id="ans_5121" value="flowers" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51211" class="bounceInLeft animated">
+										<!--span id="drag51211"  draggable="true" onClick="dragtrue('51211')" ondragstart="drag(event)" >flowers</span-->
+					<span id="drag51211" onClick="dragtrue('51211', '5121')">flowers</span>
+										</li>	
+								    <li id="d_51212" class="bounceInLeft animated">
+										<span id="drag51212"  onClick="dragWrng(event)">fairy lights</span>
+										</li>	
+								    <li id="d_51213" class="bounceInLeft animated">
+										<span id="drag51213"  onClick="dragWrng(event)">gifts</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5121">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The cracked pot realized that everyone has different				<!--span class="divLine" id="div5124" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5124"></span>
+				that make them different from others.				<input type="hidden" id="ans_5124" value="qualities" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_51241" class="bounceInLeft animated">
+										<span id="drag51241"  onClick="dragWrng(event)">marks</span>
+										</li>	
+								    <li id="d_51242" class="bounceInLeft animated">
+										<span id="drag51242"  onClick="dragWrng(event)">ranks</span>
+										</li>	
+								    <li id="d_51243" class="bounceInLeft animated">
+										<!--span id="drag51243"  draggable="true" onClick="dragtrue('51243')" ondragstart="drag(event)" >qualities</span-->
+					<span id="drag51243" onClick="dragtrue('51243', '5124')">qualities</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Comprehension</span>
+				   				   		<div class="round-section">
+				   									<script>can_mcq='mcq';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mcq' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+															<script>can_rearwo='rearwo';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#rearwo' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">3</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">3.  The Cracked Pot</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=0</script>                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		    	
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	 
+<!-- ----------------------MCQ-------------------------------- -->
+ <section class="data-list uk-section vk-activity"  id="mcq">
+         <div class="uk-container bgchnage">
+         		<span class="top_title">3.  The Cracked Pot</span>
+		 	<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!--  <h1> Multiple Choice Quiz </h1>-->
+            <div class="mcq-box mcc">
+             <h4 style="text-align:center;font-weight:800;font-size:26px;">Click the correct answer.</h4> 
+               <div class="mcq-q">
+                  <h2 id ="titleQuestion" ></h2>
+               </div>
+               <div name ="myForm" id = "myForm">
+                  <form class="form">
+                     <div class="mcq-ans">
+                        <div id="radios">
+                        </div>
+                     </div>
+                  </form >
+                  <div class="mcq-nxt-btns">
+                     <button type = "button" name ="begin" id="begin"  style="visibility: hidden;"></button>
+                     <button type = "button" name = "back" id = "back"  class="btn custmz-btn-back">Back</button>
+                     <button type = "button" name="next" id="nextbtn" class="btn custmz-btn-nxt">Next</button>
+                     <p id ="btnvalid" class="tf">Please select an answer.</p>
+                  </div>
+               </div>
+            </div>
+			   <div class="w3-section">
+			   	 <span class="activity-title">Comprehension</span>
+				 				   		<div class="round-section">
+													    <script>can_mcq='mcq';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mcq' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															    <script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+															    <script>can_rearwo='rearwo';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#rearwo' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">3</i>              
+													</div>
+												 </a>			   
+										 </div>
+                              <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+         </div>
+      </section>
+	  
+	  
+ 
+	
+		
+<!-- ----------------------Sequence--------------------------- -->
+	<section class="data-list uk-section vk-activity"  id="rearwo">
+	       <div class="uk-container bgchnage">
+	       		<span class="top_title">3.  The Cracked Pot</span>
+		 	<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+         <div class="seq-box mcc">		
+			<div class="wideBox">
+                  <h3>Drag and rearrange the sentences in the correct order.</h3>
+               </div>
+            <ol id="movies" class=""></ol>
+            <div class="seq-btn-box">
+               <button id="seq_btn" class="seq-btn">Submit</button>
+            </div>
+         </div>
+            <div class="w3-section">
+            	 <span class="activity-title">Comprehension</span>
+												<div class="round-section">
+														<script>can_mcq='mcq';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mcq' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas ">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas ">2</i>              
+													</div>
+												 </a>			   
+															<script>can_rearwo='rearwo';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#rearwo' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas ">3</i>              
+													</div>
+												 </a>			   
+										 </div>				
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+		</div>
+    </section>
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="categoryab52.html?chapId=3&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [{question:'The old Chinese woman had _________ large pots.',answer:["two","four","three"],correctAnswer:["two",1],selected:""},{question:'The cracked pot realized that everyone has different _______ that make them different from others.',answer:["marks","ranks","qualities"],correctAnswer:["qualities",1],selected:""},{question:'The cracked pot was ________ of its imperfection.',answer:["fearful","ashamed","happy"],correctAnswer:["ashamed",1],selected:""},{question:'One pot had a _________ in it.',answer:["mark","scar","crack"],correctAnswer:["crack",1],selected:""},{question:'The old woman brought home ________ pots of water.',answer:["two and a half","one and a half","three and a half"],correctAnswer:["one and a half",1],selected:""},];
+   var allQuestions1 = [];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+ <script>
+	  var tt=0;
+	  var currectAnsw = ["The old Chinese woman had two pots to bring water.","One pot carried a full portion of water.","The other pot had a crack in it.","The cracked pot was unhappy because it could do only half of the work.","The cracked pot spoke to the old woman.","The old woman explained that she planted flower seeds on the side of the path.","The cracked pot\u2019s weakness helped the old woman.","The cracked pot realized that everyone has different qualities that make them different from others."];
+      var movies = ["The old Chinese woman had two pots to bring water.","One pot carried a full portion of water.","The other pot had a crack in it.","The cracked pot was unhappy because it could do only half of the work.","The cracked pot spoke to the old woman.","The old woman explained that she planted flower seeds on the side of the path.","The cracked pot\u2019s weakness helped the old woman.","The cracked pot realized that everyone has different qualities that make them different from others."].sort(function() {
+      		return 0.5 - Math.random();
+      	}),
+      	i = 0,
+      	list = $( "#movies" ).sortable({
+      		placeholder: "movie-placeholder"
+      	});
+      for ( ; i < movies.length; i++ ) {
+      	list.append( "<li>" + movies[ i ] + "</li>" );
+      }
+      $( "#seq_btn" ).button().on( "click", function() {
+      	var moviess = new Array;
+      	$( "#movies li" ).each(function() {
+      		moviess.push( this.innerHTML );
+      	});
+		$.each(moviess, function (i) {
+			if(moviess[i]==currectAnsw[i]){
+			//	$('li:contains("'+moviess[i]+'")').css('background-color', '#00a7c1');   
+                $('li:contains("'+moviess[i]+'")').addClass('rightcross');
+			++tt;	
+			} else {
+			//$('li:contains("'+moviess[i]+'")').css('background-color', 'red');
+            $('li:contains("'+moviess[i]+'")').addClass('wrongcross');  
+		}
+		});
+		$("a.w3-button").css('pointer-events','none');
+		setTimeout(function(){ 
+		//$("#score").text("Your Total Score is : "+tt);
+		$("#score").text("Congratulations! You've done.");
+        //$(".seq-box").hide();
+        $("#rearwo").hide();
+		Cat_index = ArrCat.indexOf('rearwo');
+		var tN = (Cat_index+1);		
+		if(ArrCat.length>tN){
+				//$("#"+ArrCat[tN]).show();	
+				document.cookie = "lastactive=rearwo";
+				document.cookie = "nextactive="+ArrCat[tN];
+				$("#resultt").show();
+			}else{
+				document.cookie = "lastactive=rearwo";
+				document.cookie = "nextactive=''";
+				$('#nextExc').hide();
+				$("#resultt").show();	
+		}
+		}, 3000);
+      });
+</script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#mcq').css('display', 'block');
+		$("a[data-target='#mcq']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=3&catId=1&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:32:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

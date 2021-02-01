@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/category.php?chapId=16&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:28:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script> <style>
+body { background-image: url('imgs/1200.png'); }
+#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+.vocabulary { background-color: #fda115 ! important; order:2}
+.grammar { background-color: #007974 ! important; order:3}
+.listening { background-color: #2d7ca7 ! important; order:4}
+.writing { background-color: #e56c19 ! important; order:6}
+.sounds { background-color: #66669a ! important; order:5}
+.video { background-color: #e51919c9 ! important;}
+</style>
+
+<div class="topController">
+	
+	<span id="activeTitle">Class 2</span>
+<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>
+	
+</div>
+ <div class="uk-section vk-category">
+<div class="uk-container" style="margin-top: 140px;">
+
+	<a href="front.html" class="crossButton"><img src="imgs/close.png"></a>
+	<div class="row ">
+		<div class="inner-area">
+		
+			<p class="disc-p">16.  The Daydreamer</p>
+			</div>
+			<div class="cata-list">
+						<div class="cs-col-2 comprehension">
+						<a class="hide-dec" href='activityfce9.html?chapId=16&amp;catId=1&amp;class=2&amp;series=18'>
+						
+			<img src="imgs/Comprehension.png" class="img-responsive r-image img-center" alt="Comprehension">
+			<!-- <p class="cata-text">Comprehension</p> -->
+			<p class="cat-title">Comprehension</p>
+
+			
+			</a>
+			</div>
+						<div class="cs-col-2 vocabulary">
+						<a class="hide-dec" href='activity5874.html?chapId=16&amp;catId=2&amp;class=2&amp;series=18'>
+						
+			<img src="imgs/Vocabulary.png" class="img-responsive r-image img-center" alt="Vocabulary">
+			<!-- <p class="cata-text">Vocabulary</p> -->
+			<p class="cat-title">Vocabulary</p>
+
+			
+			</a>
+			</div>
+						<div class="cs-col-2 grammar">
+						<a class="hide-dec" href='activity3765.html?chapId=16&amp;catId=3&amp;class=2&amp;series=18'>
+						
+			<img src="imgs/Grammar.png" class="img-responsive r-image img-center" alt="Grammar">
+			<!-- <p class="cata-text">Grammar</p> -->
+			<p class="cat-title">Grammar</p>
+
+			
+			</a>
+			</div>
+						<div class="cs-col-2 vocabulary">
+							
+		<a class="hide-dec" href='audio9bdc.html?chapId=16&amp;catId=2&amp;url=074628chap_16&amp;class=2&amp;series=18'>
+						
+			<img src="imgs/Vocabulary.png" class="img-responsive r-image img-center" alt="Vocabulary">
+			<!-- <p class="cata-text">Vocabulary</p> -->
+			<p class="cat-title">Vocabulary</p>
+
+			
+			</a>
+			</div>
+						<div class="cs-col-2 writing">
+						<a class="hide-dec" href='activity4b4f.html?chapId=16&amp;catId=22&amp;class=2&amp;series=18'>
+						
+			<img src="imgs/Writing.png" class="img-responsive r-image img-center" alt="Writing">
+			<!-- <p class="cata-text">Writing</p> -->
+			<p class="cat-title">Writing</p>
+
+			
+			</a>
+			</div>
+				
+			</div>	
+		
+	</div>
+</div>
+</div>
+<img src='imgs/vivaLogo.png' class="footerLogo" />
+</body>
+<script type="text/javascript">
+	var soundis = getCookie("soundis");	
+	document.cookie = "lastactive=";
+	document.cookie = "nextactive=";
+</script>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/category.php?chapId=16&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:29:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

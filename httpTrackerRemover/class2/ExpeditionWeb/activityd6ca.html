@@ -1,0 +1,748 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=12&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fda115 ! important;	
+}
+.round-section {
+    background: #f99600 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["fib","fib2"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">12.  The Little Thief in the Pantry</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=7</script>				<div class="first-div">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> like :				<!--span class="divLine" id="div6835" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6835"></span>
+								<input type="hidden" id="ans_6835" value="dislike" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68351" class="bounceInLeft animated">
+										<span id="drag68351"  onClick="dragWrng(event)">likeless</span>
+										</li>	
+								    <li id="d_68352" class="bounceInLeft animated">
+										<!--span id="drag68352"  draggable="true" onClick="dragtrue('68352')" ondragstart="drag(event)" >dislike</span-->
+					<span id="drag68352" onClick="dragtrue('68352', '6835')">dislike</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6835">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> allow :				<!--span class="divLine" id="div6836" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6836"></span>
+								<input type="hidden" id="ans_6836" value="disallow" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68361" class="bounceInLeft animated">
+										<!--span id="drag68361"  draggable="true" onClick="dragtrue('68361')" ondragstart="drag(event)" >disallow</span-->
+					<span id="drag68361" onClick="dragtrue('68361', '6836')">disallow</span>
+										</li>	
+								    <li id="d_68362" class="bounceInLeft animated">
+										<span id="drag68362"  onClick="dragWrng(event)">unallow</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6836">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> appear :				<!--span class="divLine" id="div6837" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6837"></span>
+								<input type="hidden" id="ans_6837" value="disappear" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68371" class="bounceInLeft animated">
+										<!--span id="drag68371"  draggable="true" onClick="dragtrue('68371')" ondragstart="drag(event)" >disappear</span-->
+					<span id="drag68371" onClick="dragtrue('68371', '6837')">disappear</span>
+										</li>	
+								    <li id="d_68372" class="bounceInLeft animated">
+										<span id="drag68372"  onClick="dragWrng(event)">unappear</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6837">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> honest :				<!--span class="divLine" id="div6838" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6838"></span>
+								<input type="hidden" id="ans_6838" value="dishonest" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68381" class="bounceInLeft animated">
+										<span id="drag68381"  onClick="dragWrng(event)">honestless</span>
+										</li>	
+								    <li id="d_68382" class="bounceInLeft animated">
+										<!--span id="drag68382"  draggable="true" onClick="dragtrue('68382')" ondragstart="drag(event)" >dishonest</span-->
+					<span id="drag68382" onClick="dragtrue('68382', '6838')">dishonest</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6838">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> loyal :				<!--span class="divLine" id="div6839" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6839"></span>
+								<input type="hidden" id="ans_6839" value="disloyal" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68391" class="bounceInLeft animated">
+										<span id="drag68391"  onClick="dragWrng(event)">misloyal</span>
+										</li>	
+								    <li id="d_68392" class="bounceInLeft animated">
+										<!--span id="drag68392"  draggable="true" onClick="dragtrue('68392')" ondragstart="drag(event)" >disloyal</span-->
+					<span id="drag68392" onClick="dragtrue('68392', '6839')">disloyal</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6839">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> connect :				<!--span class="divLine" id="div6840" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6840"></span>
+								<input type="hidden" id="ans_6840" value="disconnect" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68401" class="bounceInLeft animated">
+										<span id="drag68401"  onClick="dragWrng(event)">unconnect</span>
+										</li>	
+								    <li id="d_68402" class="bounceInLeft animated">
+										<!--span id="drag68402"  draggable="true" onClick="dragtrue('68402')" ondragstart="drag(event)" >disconnect</span-->
+					<span id="drag68402" onClick="dragtrue('68402', '6840')">disconnect</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6840">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				<strong>Choose the opposite of the word given below.<br><br></strong> agree :				<!--span class="divLine" id="div6841" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6841"></span>
+								<input type="hidden" id="ans_6841" value="disagree" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68411" class="bounceInLeft animated">
+										<!--span id="drag68411"  draggable="true" onClick="dragtrue('68411')" ondragstart="drag(event)" >disagree</span-->
+					<span id="drag68411" onClick="dragtrue('68411', '6841')">disagree</span>
+										</li>	
+								    <li id="d_68412" class="bounceInLeft animated">
+										<span id="drag68412"  onClick="dragWrng(event)">unagree</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">12.  The Little Thief in the Pantry</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=6</script>				<div class="first-div"">
+				 <div class="fill-qu">
+				Shamita was being				<span class="divLine" id="div6849" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6849"></span-->
+				. She did not tell the truth.				<input type="hidden" id="ans_6849" value="dishonest" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68491" class="bounceInLeft animated">
+										<span id="drag68491"  draggable="true" ondragstart="dragWrng2(event)">disobey</span>
+										</li>	
+								    <li id="d_68492" class="bounceInLeft animated">
+										<span id="drag68492"  draggable="true" ondragstart="drag(event)" >dishonest</span>
+					<!--span id="drag68492" onClick="dragtrue('68492', '6849')">dishonest</span-->
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6849">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				I				<span class="divLine" id="div6850" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6850"></span-->
+				with her idea of buying a vase.				<input type="hidden" id="ans_6850" value="disagree" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68501" class="bounceInLeft animated">
+										<span id="drag68501"  draggable="true" ondragstart="dragWrng2(event)">disappear</span>
+										</li>	
+								    <li id="d_68502" class="bounceInLeft animated">
+										<span id="drag68502"  draggable="true" ondragstart="drag(event)" >disagree</span>
+					<!--span id="drag68502" onClick="dragtrue('68502', '6850')">disagree</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6850">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				Sunny and Vikas				<span class="divLine" id="div6851" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6851"></span-->
+				their elder brother.				<input type="hidden" id="ans_6851" value="disobey" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68511" class="bounceInLeft animated">
+										<span id="drag68511"  draggable="true" ondragstart="dragWrng2(event)">disappear</span>
+										</li>	
+								    <li id="d_68512" class="bounceInLeft animated">
+										<span id="drag68512"  draggable="true" ondragstart="drag(event)" >disobey</span>
+					<!--span id="drag68512" onClick="dragtrue('68512', '6851')">disobey</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6851">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				Where did Monika				<span class="divLine" id="div6853" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6853"></span-->
+				? She was here a moment ago.				<input type="hidden" id="ans_6853" value="disappear" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68531" class="bounceInLeft animated">
+										<span id="drag68531"  draggable="true" ondragstart="dragWrng2(event)">disapprove</span>
+										</li>	
+								    <li id="d_68532" class="bounceInLeft animated">
+										<span id="drag68532"  draggable="true" ondragstart="drag(event)" >disappear</span>
+					<!--span id="drag68532" onClick="dragtrue('68532', '6853')">disappear</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6853">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				Please				<span class="divLine" id="div6854" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6854"></span-->
+				her for cheating in the exam.				<input type="hidden" id="ans_6854" value="disqualify" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68541" class="bounceInLeft animated">
+										<span id="drag68541"  draggable="true" ondragstart="dragWrng2(event)">disappear</span>
+										</li>	
+								    <li id="d_68542" class="bounceInLeft animated">
+										<span id="drag68542"  draggable="true" ondragstart="drag(event)" >disqualify</span>
+					<!--span id="drag68542" onClick="dragtrue('68542', '6854')">disqualify</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6854">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				I strongly				<span class="divLine" id="div6857" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6857"></span-->
+				of people allowing their children to have televisions in their bedrooms.				<input type="hidden" id="ans_6857" value="disapprove" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68571" class="bounceInLeft animated">
+										<span id="drag68571"  draggable="true" ondragstart="drag(event)" >disapprove</span>
+					<!--span id="drag68571" onClick="dragtrue('68571', '6857')">disapprove</span-->
+										</li>	
+								    <li id="d_68572" class="bounceInLeft animated">
+										<span id="drag68572"  draggable="true" ondragstart="dragWrng2(event)">disappear</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		      
+			  <div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+				</div>
+				
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	  
+	  
+ 
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="category96d2.html?chapId=12&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [];
+   var allQuestions1 = [];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#fib').css('display', 'block');
+		$("a[data-target='#fib']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=12&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

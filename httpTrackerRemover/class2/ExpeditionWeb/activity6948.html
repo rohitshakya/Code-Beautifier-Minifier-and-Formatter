@@ -1,0 +1,493 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=9&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fda115 ! important;	
+}
+.round-section {
+    background: #f99600 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["mcq"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">9.  Birbal Goes to Heaven</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=0</script>                </div>
+                 </div>
+               <div id="result"></div>
+			         </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">9.  Birbal Goes to Heaven</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=0</script>                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		    	
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	 
+<!-- ----------------------MCQ-------------------------------- -->
+ <section class="data-list uk-section vk-activity"  id="mcq">
+         <div class="uk-container bgchnage">
+         		<span class="top_title">9.  Birbal Goes to Heaven</span>
+		 	<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!--  <h1> Multiple Choice Quiz </h1>-->
+            <div class="mcq-box mcc">
+             <h4 style="text-align:center;font-weight:800;font-size:26px;">Click the correct answer.</h4> 
+               <div class="mcq-q">
+                  <h2 id ="titleQuestion" ></h2>
+               </div>
+               <div name ="myForm" id = "myForm">
+                  <form class="form">
+                     <div class="mcq-ans">
+                        <div id="radios">
+                        </div>
+                     </div>
+                  </form >
+                  <div class="mcq-nxt-btns">
+                     <button type = "button" name ="begin" id="begin"  style="visibility: hidden;"></button>
+                     <button type = "button" name = "back" id = "back"  class="btn custmz-btn-back">Back</button>
+                     <button type = "button" name="next" id="nextbtn" class="btn custmz-btn-nxt">Next</button>
+                     <p id ="btnvalid" class="tf">Please select an answer.</p>
+                  </div>
+               </div>
+            </div>
+			   <div class="w3-section">
+			   	 <span class="activity-title">Vocabulary</span>
+				 	
+				        <div class="round-section hidden">
+													    <script>can_mcq='mcq';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mcq' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+										 </div>
+                              <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+         </div>
+      </section>
+	  
+	  
+ 
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="categoryff05.html?chapId=9&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [{question:'Which one is different?',answer:["green","blue","red","television"],correctAnswer:["television",1],selected:""},{question:'Which one is different?',answer:["netball","volleyball","egg","basketball"],correctAnswer:["egg",1],selected:""},{question:'Which one is different?',answer:["necklace","head","leg","arm"],correctAnswer:["necklace",1],selected:""},{question:'Which one is different?',answer:["Saturday","March","Wednesday","Monday"],correctAnswer:["March",1],selected:""},{question:'Which one is different?',answer:["Holi","Christmas","Diwali","pen"],correctAnswer:["pen",1],selected:""},];
+   var allQuestions1 = [];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#mcq').css('display', 'block');
+		$("a[data-target='#mcq']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=9&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

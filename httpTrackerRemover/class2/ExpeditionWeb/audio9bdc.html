@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/audio.php?chapId=16&catId=2&url=074628chap_16&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script> 	<!-- Audio Player CSS & Scripts -->	
+	<script src="js/mediaelement-and-player.min.js"></script>
+	<link rel="stylesheet" href="css/aud_style.css" media="screen">
+	<!-- end Audio Player CSS & Scripts -->
+	<style type="text/css">
+	html, body { margin: 0;	padding: 0; }
+	.audio-player { margin: 0 auto;}
+	.inner-area-audio{ padding: 20px; text-align: center;}
+    a.audio-skip{z-index: 999; position: relative;}
+	</style>
+	<script type="text/javascript">
+	$('#activeTitle').text('Play Audio');
+	$("audio").prop('muted', true);
+	</script>
+<style>
+body {
+	background-image: url('imgs/1200.png');
+}
+</style>
+
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+
+	
+<section class="animated uk-section vk-activity" >
+<div class="uk-container audioContainer" style="padding: 0 !important;">
+	<a href="javascript:window.history.go(-1)" class="crossButton"><img src="imgs/close.png"></a>
+	<!-- <h1>Play Audio</h1> -->
+	<div class="col-md-12">
+		<div class="inner-area-audio">					
+			<div class=" fadeInUpBig animated" style="width:83%; margin:auto;">	
+				<!-- Audio Player HTML -->
+	<div class="audio-player">		
+	   <h1 style="text-align:center;">16. The Daydreamer</h1>
+	   <h1><span>Listen to the audio and then attempt the exercise.</span></h1>
+		<audio id="audio-player" src="uploads/audioSet/074628chap_16.html"  controls="controls"></audio> 
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#audio-player').mediaelementplayer({
+				alwaysShowControls: true,
+				features: ['playpause','volume','progress'],
+				audioVolume: 'horizontal',
+				//audioWidth: 800,
+				//audioHeight: 120
+			});
+		});
+	</script>
+	<!-- end Audio Player HTML -->
+	<a href='activityefbb.html?chapId=16&amp;catId=2&amp;class=2&amp;series=18&amp;step=2' class="btn btn-success audio-skip">Exercise</a>
+	
+			</div>	
+		</div>
+	</div>
+</div>
+
+</section>
+<script>
+var aud = document.getElementById("audio-player");
+/**
+aud.onended = function() {
+	window.location = "activity.php?chapId=16&catId=2&class=2";
+};**/
+</script>
+<img src='imgs/vivaLogo.png' class="footerLogo" />
+</body>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/audio.php?chapId=16&catId=2&url=074628chap_16&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

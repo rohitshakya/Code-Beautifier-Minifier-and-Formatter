@@ -1,0 +1,746 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=12&catId=1&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fe428e ! important;	
+}
+.round-section {
+    background: #b22e63 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["tnf","fib"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">12.  The Little Thief in the Pantry</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=10</script>				<div class="first-div">
+				 <div class="fill-qu">
+				The little mousie thought that the people in the house were				<!--span class="divLine" id="div5869" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5869"></span>
+				.				<input type="hidden" id="ans_5869" value="kind" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58691" class="bounceInLeft animated">
+										<span id="drag58691"  onClick="dragWrng(event)">bad</span>
+										</li>	
+								    <li id="d_58692" class="bounceInLeft animated">
+										<span id="drag58692"  onClick="dragWrng(event)">good</span>
+										</li>	
+								    <li id="d_58693" class="bounceInLeft animated">
+										<!--span id="drag58693"  draggable="true" onClick="dragtrue('58693')" ondragstart="drag(event)" >kind</span-->
+					<span id="drag58693" onClick="dragtrue('58693', '5869')">kind</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5869">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The people in the house kept the food in the				<!--span class="divLine" id="div5870" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5870"></span>
+				.				<input type="hidden" id="ans_5870" value="pantry" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58701" class="bounceInLeft animated">
+										<!--span id="drag58701"  draggable="true" onClick="dragtrue('58701')" ondragstart="drag(event)" >pantry</span-->
+					<span id="drag58701" onClick="dragtrue('58701', '5870')">pantry</span>
+										</li>	
+								    <li id="d_58702" class="bounceInLeft animated">
+										<span id="drag58702"  onClick="dragWrng(event)">bedroom</span>
+										</li>	
+								    <li id="d_58703" class="bounceInLeft animated">
+										<span id="drag58703"  onClick="dragWrng(event)">basement</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5870">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Greywhiskers went to the pantry when his				<!--span class="divLine" id="div5871" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5871"></span>
+				was asleep.				<input type="hidden" id="ans_5871" value="mother" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58711" class="bounceInLeft animated">
+										<span id="drag58711"  onClick="dragWrng(event)">father</span>
+										</li>	
+								    <li id="d_58712" class="bounceInLeft animated">
+										<!--span id="drag58712"  draggable="true" onClick="dragtrue('58712')" ondragstart="drag(event)" >mother</span-->
+					<span id="drag58712" onClick="dragtrue('58712', '5871')">mother</span>
+										</li>	
+								    <li id="d_58713" class="bounceInLeft animated">
+										<span id="drag58713"  onClick="dragWrng(event)">sister</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5871">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Greywhiskers sniffed the				<!--span class="divLine" id="div5872" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5872"></span>
+				cake.				<input type="hidden" id="ans_5872" value="iced" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58721" class="bounceInLeft animated">
+										<!--span id="drag58721"  draggable="true" onClick="dragtrue('58721')" ondragstart="drag(event)" >iced</span-->
+					<span id="drag58721" onClick="dragtrue('58721', '5872')">iced</span>
+										</li>	
+								    <li id="d_58722" class="bounceInLeft animated">
+										<span id="drag58722"  onClick="dragWrng(event)">sponge</span>
+										</li>	
+								    <li id="d_58723" class="bounceInLeft animated">
+										<span id="drag58723"  onClick="dragWrng(event)">dry</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5872">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Greywhiskers was nibbling at				<!--span class="divLine" id="div5873" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5873"></span>
+				birthday cake.				<input type="hidden" id="ans_5873" value="Miss Ethel&rsquo;s" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58731" class="bounceInLeft animated">
+										<!--span id="drag58731"  draggable="true" onClick="dragtrue('58731')" ondragstart="drag(event)" >Miss Ethel&rsquo;s</span-->
+					<span id="drag58731" onClick="dragtrue('58731', '5873')">Miss Ethel&rsquo;s</span>
+										</li>	
+								    <li id="d_58732" class="bounceInLeft animated">
+										<span id="drag58732"  onClick="dragWrng(event)">Miss Nina&rsquo;s</span>
+										</li>	
+								    <li id="d_58733" class="bounceInLeft animated">
+										<span id="drag58733"  onClick="dragWrng(event)">Miss Mary&rsquo;s</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5873">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Greywhiskers&rsquo; mother got				<!--span class="divLine" id="div5874" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5874"></span>
+				when she saw a hole in the cake.				<input type="hidden" id="ans_5874" value="angry" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58741" class="bounceInLeft animated">
+										<!--span id="drag58741"  draggable="true" onClick="dragtrue('58741')" ondragstart="drag(event)" >angry</span-->
+					<span id="drag58741" onClick="dragtrue('58741', '5874')">angry</span>
+										</li>	
+								    <li id="d_58742" class="bounceInLeft animated">
+										<span id="drag58742"  onClick="dragWrng(event)">sad</span>
+										</li>	
+								    <li id="d_58743" class="bounceInLeft animated">
+										<span id="drag58743"  onClick="dragWrng(event)">happy</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5874">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The little wooden house was a trap for the				<!--span class="divLine" id="div5875" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5875"></span>
+				.				<input type="hidden" id="ans_5875" value="little mousie" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58751" class="bounceInLeft animated">
+										<span id="drag58751"  onClick="dragWrng(event)">little puppy</span>
+										</li>	
+								    <li id="d_58752" class="bounceInLeft animated">
+										<!--span id="drag58752"  draggable="true" onClick="dragtrue('58752')" ondragstart="drag(event)" >little mousie</span-->
+					<span id="drag58752" onClick="dragtrue('58752', '5875')">little mousie</span>
+										</li>	
+								    <li id="d_58753" class="bounceInLeft animated">
+										<span id="drag58753"  onClick="dragWrng(event)">little kitten</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5875">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The cook called Miss Ethel to see the				<!--span class="divLine" id="div5876" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5876"></span>
+				who had eaten her birthday cake.				<input type="hidden" id="ans_5876" value="thief" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58761" class="bounceInLeft animated">
+										<span id="drag58761"  onClick="dragWrng(event)">shopkeeper</span>
+										</li>	
+								    <li id="d_58762" class="bounceInLeft animated">
+										<!--span id="drag58762"  draggable="true" onClick="dragtrue('58762')" ondragstart="drag(event)" >thief</span-->
+					<span id="drag58762" onClick="dragtrue('58762', '5876')">thief</span>
+										</li>	
+								    <li id="d_58763" class="bounceInLeft animated">
+										<span id="drag58763"  onClick="dragWrng(event)">guest</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5876">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The				<!--span class="divLine" id="div5877" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5877"></span>
+				planned to drown the little mousie.				<input type="hidden" id="ans_5877" value="cook" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58771" class="bounceInLeft animated">
+										<span id="drag58771"  onClick="dragWrng(event)">tailor</span>
+										</li>	
+								    <li id="d_58772" class="bounceInLeft animated">
+										<!--span id="drag58772"  draggable="true" onClick="dragtrue('58772')" ondragstart="drag(event)" >cook</span-->
+					<span id="drag58772" onClick="dragtrue('58772', '5877')">cook</span>
+										</li>	
+								    <li id="d_58773" class="bounceInLeft animated">
+										<span id="drag58773"  onClick="dragWrng(event)">doctor</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5877">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Miss Ethel lifted the lid of the				<!--span class="divLine" id="div5878" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5878"></span>
+				.				<input type="hidden" id="ans_5878" value="trap" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_58781" class="bounceInLeft animated">
+										<span id="drag58781"  onClick="dragWrng(event)">jar</span>
+										</li>	
+								    <li id="d_58782" class="bounceInLeft animated">
+										<!--span id="drag58782"  draggable="true" onClick="dragtrue('58782')" ondragstart="drag(event)" >trap</span-->
+					<span id="drag58782" onClick="dragtrue('58782', '5878')">trap</span>
+										</li>	
+								    <li id="d_58783" class="bounceInLeft animated">
+										<span id="drag58783"  onClick="dragWrng(event)">drum</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Comprehension</span>
+				   				   		<div class="round-section">
+				   									<script>can_tnf='tnf';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#tnf' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">12.  The Little Thief in the Pantry</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=0</script>                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		    	
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	  
+	  
+ 
+	
+<!-- ----------------------True and false--------------------- -->	  
+		<section class="data-list uk-section vk-activity"  id="tnf">
+           <div class="uk-container bgchnage">
+           		<span class="top_title">12.  The Little Thief in the Pantry</span>
+		 	<a href="javascript:window.history.go(-1)" id="listBack" class="backButton"><img src="imgs/back.png"></a>
+            <div id="tnff" class="mcq-box mcc">
+			<h4 style="text-align:center;font-weight:800;font-size:26px;">Click the correct answer.</h4>
+		       <div class="mcq-q">
+                  <h2 id ="titleQuestion1"></h2>
+               </div>
+               <div name ="myForm" id = "myForm1">
+                  <form class="form">
+                     <div class="mcq-ans bounceInLeft animated">
+                        <div id="radios1">
+                        </div>
+                     </div>
+                  </form >
+                  <div class="mcq-nxt-btns">
+                     <button type = "button" name ="begin" id="begin1"  style="visibility: hidden;"></button>
+                     <button type = "button" name = "back" id = "back1"  class="btn btn-lg btn3d custmz-btn-back">Back</button>
+                     <button type = "button" name="next" id="nextbtn1" class="btn btn-lg custmz-btn-nxt ">Next</button>
+                     <p id ="btnvalid1" class="tf">Please select an answer.</p>
+                  </div>
+               </div>
+            </div>
+              <div class="w3-section">
+              	 <span class="activity-title">Comprehension</span>
+				 				   		<div class="round-section">
+													<script>can_tnf='tnf';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#tnf' href="javascript:void(0)" >
+													<div class="">						
+														<i class="fas-icon fas ">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)" >
+													<div class="">						
+														<i class="fas-icon fas ">2</i>              
+													</div>
+												 </a>			   
+										 </div>
+                   <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+         </div>
+    </section>
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="category96d2.html?chapId=12&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [];
+   var allQuestions1 = [{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> The little mousie&rsquo;s mother thought that people would catch him if he moved out of the hole.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> Greywhiskers was not sure that he could take care of himself.',answer:["True","False"],correctAnswer:["False",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> Greywhiskers climbed onto the pantry shelves to look for food.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> A large iced cake was kept upon the chair.',answer:["True","False"],correctAnswer:["False",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> The little mousie saw a little wooden trap in the pantry.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> The cook called Miss Ethel to come and see the thief who had eaten her birthday cake.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> Miss Ethel was happy to see the little mousie inside the trap.',answer:["True","False"],correctAnswer:["False",1],selected:""},{question:'<strong>Identify whether the given statement is true or false.</strong><br><br> The little mousie promised never to disobey his mother again.',answer:["True","False"],correctAnswer:["True",1],selected:""},];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#tnf').css('display', 'block');
+		$("a[data-target='#tnf']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=12&catId=1&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:33:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

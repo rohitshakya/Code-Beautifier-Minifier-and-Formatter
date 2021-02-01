@@ -1,0 +1,838 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=15&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fda115 ! important;	
+}
+.round-section {
+    background: #f99600 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["fib","fib2"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">15.  The Crystal Ball</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=10</script>				<div class="first-div">
+				 <div class="fill-qu">
+				as brave as a				<!--span class="divLine" id="div6258" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6258"></span>
+								<input type="hidden" id="ans_6258" value="lion" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62581" class="bounceInLeft animated">
+										<span id="drag62581"  onClick="dragWrng(event)">mountain</span>
+										</li>	
+								    <li id="d_62582" class="bounceInLeft animated">
+										<!--span id="drag62582"  draggable="true" onClick="dragtrue('62582')" ondragstart="drag(event)" >lion</span-->
+					<span id="drag62582" onClick="dragtrue('62582', '6258')">lion</span>
+										</li>	
+								    <li id="d_62583" class="bounceInLeft animated">
+										<span id="drag62583"  onClick="dragWrng(event)">lamb</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6258">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as big as an				<!--span class="divLine" id="div6259" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6259"></span>
+								<input type="hidden" id="ans_6259" value="elephant" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62591" class="bounceInLeft animated">
+										<!--span id="drag62591"  draggable="true" onClick="dragtrue('62591')" ondragstart="drag(event)" >elephant</span-->
+					<span id="drag62591" onClick="dragtrue('62591', '6259')">elephant</span>
+										</li>	
+								    <li id="d_62592" class="bounceInLeft animated">
+										<span id="drag62592"  onClick="dragWrng(event)">umbrella</span>
+										</li>	
+								    <li id="d_62593" class="bounceInLeft animated">
+										<span id="drag62593"  onClick="dragWrng(event)">ant</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6259">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as light as a				<!--span class="divLine" id="div6260" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6260"></span>
+								<input type="hidden" id="ans_6260" value="feather" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62601" class="bounceInLeft animated">
+										<span id="drag62601"  onClick="dragWrng(event)">lion</span>
+										</li>	
+								    <li id="d_62602" class="bounceInLeft animated">
+										<span id="drag62602"  onClick="dragWrng(event)">book</span>
+										</li>	
+								    <li id="d_62603" class="bounceInLeft animated">
+										<!--span id="drag62603"  draggable="true" onClick="dragtrue('62603')" ondragstart="drag(event)" >feather</span-->
+					<span id="drag62603" onClick="dragtrue('62603', '6260')">feather</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6260">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as fresh as a				<!--span class="divLine" id="div6261" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6261"></span>
+								<input type="hidden" id="ans_6261" value="daisy" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62611" class="bounceInLeft animated">
+										<span id="drag62611"  onClick="dragWrng(event)">page</span>
+										</li>	
+								    <li id="d_62612" class="bounceInLeft animated">
+										<!--span id="drag62612"  draggable="true" onClick="dragtrue('62612')" ondragstart="drag(event)" >daisy</span-->
+					<span id="drag62612" onClick="dragtrue('62612', '6261')">daisy</span>
+										</li>	
+								    <li id="d_62613" class="bounceInLeft animated">
+										<span id="drag62613"  onClick="dragWrng(event)">car</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6261">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as cool as a				<!--span class="divLine" id="div6263" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6263"></span>
+								<input type="hidden" id="ans_6263" value="cucumber" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62631" class="bounceInLeft animated">
+										<span id="drag62631"  onClick="dragWrng(event)">stone</span>
+										</li>	
+								    <li id="d_62632" class="bounceInLeft animated">
+										<span id="drag62632"  onClick="dragWrng(event)">lion</span>
+										</li>	
+								    <li id="d_62633" class="bounceInLeft animated">
+										<!--span id="drag62633"  draggable="true" onClick="dragtrue('62633')" ondragstart="drag(event)" >cucumber</span-->
+					<span id="drag62633" onClick="dragtrue('62633', '6263')">cucumber</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6263">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as clear as				<!--span class="divLine" id="div6264" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6264"></span>
+								<input type="hidden" id="ans_6264" value="crystal" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62641" class="bounceInLeft animated">
+										<span id="drag62641"  onClick="dragWrng(event)">newspaper</span>
+										</li>	
+								    <li id="d_62642" class="bounceInLeft animated">
+										<span id="drag62642"  onClick="dragWrng(event)">coal</span>
+										</li>	
+								    <li id="d_62643" class="bounceInLeft animated">
+										<!--span id="drag62643"  draggable="true" onClick="dragtrue('62643')" ondragstart="drag(event)" >crystal</span-->
+					<span id="drag62643" onClick="dragtrue('62643', '6264')">crystal</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6264">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as black as				<!--span class="divLine" id="div6265" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6265"></span>
+								<input type="hidden" id="ans_6265" value="coal" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62651" class="bounceInLeft animated">
+										<span id="drag62651"  onClick="dragWrng(event)">mud</span>
+										</li>	
+								    <li id="d_62652" class="bounceInLeft animated">
+										<span id="drag62652"  onClick="dragWrng(event)">water</span>
+										</li>	
+								    <li id="d_62653" class="bounceInLeft animated">
+										<!--span id="drag62653"  draggable="true" onClick="dragtrue('62653')" ondragstart="drag(event)" >coal</span-->
+					<span id="drag62653" onClick="dragtrue('62653', '6265')">coal</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6265">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as common as				<!--span class="divLine" id="div6267" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6267"></span>
+								<input type="hidden" id="ans_6267" value="dirt" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62671" class="bounceInLeft animated">
+										<!--span id="drag62671"  draggable="true" onClick="dragtrue('62671')" ondragstart="drag(event)" >dirt</span-->
+					<span id="drag62671" onClick="dragtrue('62671', '6267')">dirt</span>
+										</li>	
+								    <li id="d_62672" class="bounceInLeft animated">
+										<span id="drag62672"  onClick="dragWrng(event)">mud</span>
+										</li>	
+								    <li id="d_62673" class="bounceInLeft animated">
+										<span id="drag62673"  onClick="dragWrng(event)">daisies</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6267">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as cold as				<!--span class="divLine" id="div6268" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6268"></span>
+								<input type="hidden" id="ans_6268" value="ice" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62681" class="bounceInLeft animated">
+										<span id="drag62681"  onClick="dragWrng(event)">water</span>
+										</li>	
+								    <li id="d_62682" class="bounceInLeft animated">
+										<span id="drag62682"  onClick="dragWrng(event)">dirt</span>
+										</li>	
+								    <li id="d_62683" class="bounceInLeft animated">
+										<!--span id="drag62683"  draggable="true" onClick="dragtrue('62683')" ondragstart="drag(event)" >ice</span-->
+					<span id="drag62683" onClick="dragtrue('62683', '6268')">ice</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6268">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				as sharp as a				<!--span class="divLine" id="div6271" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6271"></span>
+								<input type="hidden" id="ans_6271" value="needle" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_62711" class="bounceInLeft animated">
+										<span id="drag62711"  onClick="dragWrng(event)">tree</span>
+										</li>	
+								    <li id="d_62712" class="bounceInLeft animated">
+										<!--span id="drag62712"  draggable="true" onClick="dragtrue('62712')" ondragstart="drag(event)" >needle</span-->
+					<span id="drag62712" onClick="dragtrue('62712', '6271')">needle</span>
+										</li>	
+								    <li id="d_62713" class="bounceInLeft animated">
+										<span id="drag62713"  onClick="dragWrng(event)">flower</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">15.  The Crystal Ball</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=6</script>				<div class="first-div"">
+				 <div class="fill-qu">
+				My cousin is as tall as a				<span class="divLine" id="div6103" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6103"></span-->
+				.				<input type="hidden" id="ans_6103" value="tree" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61031" class="bounceInLeft animated">
+										<span id="drag61031"  draggable="true" ondragstart="drag(event)" >tree</span>
+					<!--span id="drag61031" onClick="dragtrue('61031', '6103')">tree</span-->
+										</li>	
+								    <li id="d_61032" class="bounceInLeft animated">
+										<span id="drag61032"  draggable="true" ondragstart="dragWrng2(event)">tower</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6103">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				I was doing my homework. I was as busy as a				<span class="divLine" id="div6104" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6104"></span-->
+				.				<input type="hidden" id="ans_6104" value="bee" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61041" class="bounceInLeft animated">
+										<span id="drag61041"  draggable="true" ondragstart="drag(event)" >bee</span>
+					<!--span id="drag61041" onClick="dragtrue('61041', '6104')">bee</span-->
+										</li>	
+								    <li id="d_61042" class="bounceInLeft animated">
+										<span id="drag61042"  draggable="true" ondragstart="dragWrng2(event)">tiger</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6104">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				The puppy is as light as a				<span class="divLine" id="div6106" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6106"></span-->
+				.				<input type="hidden" id="ans_6106" value="feather" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61061" class="bounceInLeft animated">
+										<span id="drag61061"  draggable="true" ondragstart="drag(event)" >feather</span>
+					<!--span id="drag61061" onClick="dragtrue('61061', '6106')">feather</span-->
+										</li>	
+								    <li id="d_61062" class="bounceInLeft animated">
+										<span id="drag61062"  draggable="true" ondragstart="dragWrng2(event)">leaf</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6106">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				Kritika is as cool as a				<span class="divLine" id="div6107" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6107"></span-->
+				.				<input type="hidden" id="ans_6107" value="cucumber" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61071" class="bounceInLeft animated">
+										<span id="drag61071"  draggable="true" ondragstart="dragWrng2(event)">waterlemon</span>
+										</li>	
+								    <li id="d_61072" class="bounceInLeft animated">
+										<span id="drag61072"  draggable="true" ondragstart="drag(event)" >cucumber</span>
+					<!--span id="drag61072" onClick="dragtrue('61072', '6107')">cucumber</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6107">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				The clean clothes smell as fresh as a				<span class="divLine" id="div6109" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6109"></span-->
+				.				<input type="hidden" id="ans_6109" value="daisy" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61091" class="bounceInLeft animated">
+										<span id="drag61091"  draggable="true" ondragstart="drag(event)" >daisy</span>
+					<!--span id="drag61091" onClick="dragtrue('61091', '6109')">daisy</span-->
+										</li>	
+								    <li id="d_61092" class="bounceInLeft animated">
+										<span id="drag61092"  draggable="true" ondragstart="dragWrng2(event)">rose</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6109">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				The baby is as cute as a				<span class="divLine" id="div6110" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6110"></span-->
+				.				<input type="hidden" id="ans_6110" value="button" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_61101" class="bounceInLeft animated">
+										<span id="drag61101"  draggable="true" ondragstart="dragWrng2(event)">ball</span>
+										</li>	
+								    <li id="d_61102" class="bounceInLeft animated">
+										<span id="drag61102"  draggable="true" ondragstart="drag(event)" >button</span>
+					<!--span id="drag61102" onClick="dragtrue('61102', '6110')">button</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		      
+			  <div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+				</div>
+				
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	  
+	  
+ 
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="categorya8c2.html?chapId=15&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [];
+   var allQuestions1 = [];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#fib').css('display', 'block');
+		$("a[data-target='#fib']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=15&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

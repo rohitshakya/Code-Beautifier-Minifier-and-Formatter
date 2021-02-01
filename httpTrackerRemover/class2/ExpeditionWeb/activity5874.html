@@ -1,0 +1,750 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=16&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fda115 ! important;	
+}
+.round-section {
+    background: #f99600 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '0';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":[{"left":["cub","foal","fawn","bunny","calf"],"right":["bear","donkey","deer","rabbit","camel"],"qanswer":["bear","donkey","deer","rabbit","camel"],"quetionFill":["",""],"id":"6029","type":"mch","text":"","url":"","image":"","answer":"","question":"Match the animals with their young ones. Drag each box on the left and drop it on the matching box on the right.","urlImage":"","set_id":"939","md_list":"{\"title\":\"[\\\"\\\"]\",\"ans1\":\"[\\\"\\\"]\",\"ans2\":\"[\\\"\\\"]\",\"ans3\":\"[\\\"\\\"]\",\"ans4\":\"[\\\"\\\"]\"}","mylist":"[]","myans":"[]","3d_list":"{\"title\":\"[\\\"\\\"]\",\"ans1\":\"[\\\"\\\"]\",\"ans2\":\"[\\\"\\\"]\"}"}]}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["tnf","fib","mch"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">16.  The Daydreamer</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=9</script>				<div class="first-div">
+				 <div class="fill-qu">
+				The female of a cat is				<!--span class="divLine" id="div6013" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6013"></span>
+				.				<input type="hidden" id="ans_6013" value="queen" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60131" class="bounceInLeft animated">
+										<span id="drag60131"  onClick="dragWrng(event)">tomcat</span>
+										</li>	
+								    <li id="d_60132" class="bounceInLeft animated">
+										<!--span id="drag60132"  draggable="true" onClick="dragtrue('60132')" ondragstart="drag(event)" >queen</span-->
+					<span id="drag60132" onClick="dragtrue('60132', '6013')">queen</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6013">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The female of a deer is				<!--span class="divLine" id="div6014" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6014"></span>
+				.				<input type="hidden" id="ans_6014" value="doe" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60141" class="bounceInLeft animated">
+										<span id="drag60141"  onClick="dragWrng(event)">stag</span>
+										</li>	
+								    <li id="d_60142" class="bounceInLeft animated">
+										<!--span id="drag60142"  draggable="true" onClick="dragtrue('60142')" ondragstart="drag(event)" >doe</span-->
+					<span id="drag60142" onClick="dragtrue('60142', '6014')">doe</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6014">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The female of an elephant is				<!--span class="divLine" id="div6016" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6016"></span>
+				.				<input type="hidden" id="ans_6016" value="cow" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60161" class="bounceInLeft animated">
+										<!--span id="drag60161"  draggable="true" onClick="dragtrue('60161')" ondragstart="drag(event)" >cow</span-->
+					<span id="drag60161" onClick="dragtrue('60161', '6016')">cow</span>
+										</li>	
+								    <li id="d_60162" class="bounceInLeft animated">
+										<span id="drag60162"  onClick="dragWrng(event)">bull</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6016">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The female of a giraffe is				<!--span class="divLine" id="div6017" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6017"></span>
+				.				<input type="hidden" id="ans_6017" value="cow" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60171" class="bounceInLeft animated">
+										<span id="drag60171"  onClick="dragWrng(event)">bull</span>
+										</li>	
+								    <li id="d_60172" class="bounceInLeft animated">
+										<!--span id="drag60172"  draggable="true" onClick="dragtrue('60172')" ondragstart="drag(event)" >cow</span-->
+					<span id="drag60172" onClick="dragtrue('60172', '6017')">cow</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6017">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The female of a bear is				<!--span class="divLine" id="div6018" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6018"></span>
+				.				<input type="hidden" id="ans_6018" value="sow" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60181" class="bounceInLeft animated">
+										<!--span id="drag60181"  draggable="true" onClick="dragtrue('60181')" ondragstart="drag(event)" >sow</span-->
+					<span id="drag60181" onClick="dragtrue('60181', '6018')">sow</span>
+										</li>	
+								    <li id="d_60182" class="bounceInLeft animated">
+										<span id="drag60182"  onClick="dragWrng(event)">boar</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6018">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				A female tiger is called a				<!--span class="divLine" id="div6019" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6019"></span>
+				.				<input type="hidden" id="ans_6019" value="tigress" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60191" class="bounceInLeft animated">
+										<span id="drag60191"  onClick="dragWrng(event)">tiger</span>
+										</li>	
+								    <li id="d_60192" class="bounceInLeft animated">
+										<!--span id="drag60192"  draggable="true" onClick="dragtrue('60192')" ondragstart="drag(event)" >tigress</span-->
+					<span id="drag60192" onClick="dragtrue('60192', '6019')">tigress</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6019">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				A female horse is called a				<!--span class="divLine" id="div6020" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6020"></span>
+				.				<input type="hidden" id="ans_6020" value="mare" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60201" class="bounceInLeft animated">
+										<span id="drag60201"  onClick="dragWrng(event)">stallion</span>
+										</li>	
+								    <li id="d_60202" class="bounceInLeft animated">
+										<!--span id="drag60202"  draggable="true" onClick="dragtrue('60202')" ondragstart="drag(event)" >mare</span-->
+					<span id="drag60202" onClick="dragtrue('60202', '6020')">mare</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6020">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				A female rabbit is called a				<!--span class="divLine" id="div6022" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6022"></span>
+				.				<input type="hidden" id="ans_6022" value="doe" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60221" class="bounceInLeft animated">
+										<!--span id="drag60221"  draggable="true" onClick="dragtrue('60221')" ondragstart="drag(event)" >doe</span-->
+					<span id="drag60221" onClick="dragtrue('60221', '6022')">doe</span>
+										</li>	
+								    <li id="d_60222" class="bounceInLeft animated">
+										<span id="drag60222"  onClick="dragWrng(event)">buck</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6022">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The female of a swan is				<!--span class="divLine" id="div6024" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div6024"></span>
+				.				<input type="hidden" id="ans_6024" value="pen" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_60241" class="bounceInLeft animated">
+										<!--span id="drag60241"  draggable="true" onClick="dragtrue('60241')" ondragstart="drag(event)" >pen</span-->
+					<span id="drag60241" onClick="dragtrue('60241', '6024')">pen</span>
+										</li>	
+								    <li id="d_60242" class="bounceInLeft animated">
+										<span id="drag60242"  onClick="dragWrng(event)">cob</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_tnf='tnf';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#tnf' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+															<script>can_mch='mch';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mch' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">3</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">16.  The Daydreamer</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=0</script>                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		    	
+			</div>	
+	  </section>  
+	  
+		  
+<!-- ----------------------Drag and drop---------------------- -->
+      <section class="data-list uk-section vk-activity"  id="mch">
+       <div class="uk-container bgchnage" id='mchh'>
+       		<span class="top_title">16.  The Daydreamer</span>
+	   	<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		 <!--   <h1>Matching Activity </h1>-->
+            <div class="drag-back mcc">
+               <div class="wideBox">
+                  <h3>Match the animals with their young ones. Drag each box on the left and drop it on the matching box on the right.</h3>
+               </div>
+               <div id="content">
+                  <div id="cardPile"> </div>
+                  <div id="cardSlots"> </div>                  
+               </div>
+            </div>
+			   <div class="w3-section">
+			   	 <span class="activity-title">Vocabulary</span>
+				  				   		<div class="round-section">
+				  									<script>can_tnf='tnf';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#tnf' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas"> 1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas"> 2</i>              
+													</div>
+												 </a>			   
+															<script>can_mch='mch';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mch' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas"> 3</i>              
+													</div>
+												 </a>			   
+										 </div>
+                    <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+         </div>
+      </section>
+	  
+ 
+	  
+	  
+ 
+	
+<!-- ----------------------True and false--------------------- -->	  
+		<section class="data-list uk-section vk-activity"  id="tnf">
+           <div class="uk-container bgchnage">
+           		<span class="top_title">16.  The Daydreamer</span>
+		 	<a href="javascript:window.history.go(-1)" id="listBack" class="backButton"><img src="imgs/back.png"></a>
+            <div id="tnff" class="mcq-box mcc">
+			<h4 style="text-align:center;font-weight:800;font-size:26px;">Click the correct answer.</h4>
+		       <div class="mcq-q">
+                  <h2 id ="titleQuestion1"></h2>
+               </div>
+               <div name ="myForm" id = "myForm1">
+                  <form class="form">
+                     <div class="mcq-ans bounceInLeft animated">
+                        <div id="radios1">
+                        </div>
+                     </div>
+                  </form >
+                  <div class="mcq-nxt-btns">
+                     <button type = "button" name ="begin" id="begin1"  style="visibility: hidden;"></button>
+                     <button type = "button" name = "back" id = "back1"  class="btn btn-lg btn3d custmz-btn-back">Back</button>
+                     <button type = "button" name="next" id="nextbtn1" class="btn btn-lg custmz-btn-nxt ">Next</button>
+                     <p id ="btnvalid1" class="tf">Please select an answer.</p>
+                  </div>
+               </div>
+            </div>
+              <div class="w3-section">
+              	 <span class="activity-title">Vocabulary</span>
+				 				   		<div class="round-section">
+													<script>can_tnf='tnf';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#tnf' href="javascript:void(0)" >
+													<div class="">						
+														<i class="fas-icon fas ">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)" >
+													<div class="">						
+														<i class="fas-icon fas ">2</i>              
+													</div>
+												 </a>			   
+															<script>can_mch='mch';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#mch' href="javascript:void(0)" >
+													<div class="">						
+														<i class="fas-icon fas ">3</i>              
+													</div>
+												 </a>			   
+										 </div>
+                   <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+         </div>
+    </section>
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="category6e4e.html?chapId=16&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [];
+   var allQuestions1 = [{question:'<b>Identify whether the given statement is true or false.</b><br><br> Little Sia got a new dress on her birthday.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<b>Identify whether the given statement is true or false.</b><br><br> Sia wanted to wear her dress to the Diwali party.',answer:["True","False"],correctAnswer:["False",1],selected:""},{question:'<b>Identify whether the given statement is true or false.</b><br><br> Sia looked at her dress happily.',answer:["True","False"],correctAnswer:["True",1],selected:""},{question:'<b>Identify whether the given statement is true or false.</b><br><br> Sia was afraid that Sam&rsquo;s cat will lick her dress.',answer:["True","False"],correctAnswer:["False",1],selected:""},{question:'<b>Identify whether the given statement is true or false.</b><br><br> Sia&rsquo;s dress got caught on the edge of the chair.',answer:["True","False"],correctAnswer:["True",1],selected:""},];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#tnf').css('display', 'block');
+		$("a[data-target='#tnf']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=16&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:34:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

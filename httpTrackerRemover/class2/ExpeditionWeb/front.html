@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/front.php by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:18:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>       <!-- write your code here -->
+<style type="text/css">
+.home-hide{
+display:none;
+}
+.custmz-btn{
+	display:none;	
+}
+.uk-fcontainer{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background: gray;
+}
+h4{font-family: Roboto, sans-serif , cursive!important;}
+body:after{background-color: rgba(0,0,0,0);}
+.rope{
+  margin-top: 37%;
+    width: 25%;
+    left: 0;
+    position: relative;
+    margin-left: 30%;
+    z-index: 9;
+ }
+.googals{
+  margin-top: 49%;
+    width: 12%;
+    margin-left: 18%;
+    position: absolute;
+    left: 0;
+ }
+.map{
+  margin-top: 17%;
+    width: 48%;
+    left: 0;
+    position: absolute;
+    margin-left: 4%;
+    z-index: 1;
+ }
+.compass{
+  margin-top: 20%;
+    width: 25%;
+    left: 0;
+    position: absolute;
+    margin-left: 0%;
+    z-index: 9;
+ }
+.doorbin{
+    margin-top: 16%;
+    width: 20%;
+    left: 0;
+    position: absolute;
+    margin-left: 30%;
+    z-index: 9;
+ }
+.hook-top{
+    margin-top: 23%;
+    width: 6%;
+    left: 0;
+    position: absolute;
+    margin-left: 20%;
+ }
+.hook-bottom{
+    margin-top: 44%;
+    width: 5%;
+    left: 0;
+    position: absolute;
+    margin-left: 37%;
+ }
+.bag{
+    margin-top: 40%;
+    width: 25%;
+    left: 0;
+    position: absolute;
+    margin-left: 0%;
+    z-index: 1;
+ }
+.english{
+    width: 20%;
+    left: 0;
+    position: absolute;
+    margin-top: calc( 30vh + 1.5% );
+    margin-left: calc( 12vw + 1.5% );
+    z-index: 1;
+  }
+.ropeTop{
+     margin-top: 12.3%;
+    width: 6%;
+    left: 0;
+    position: absolute;
+    margin-left: 32%;
+ }
+.ropebottom{
+    margin-top: 52%;
+    width: 5%;
+    left: 0;
+    position: absolute;
+    margin-left: 30%;
+ }
+.mar-left{
+    margin-left: 8%;      
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;
+    float: left;
+    margin-left: 2px;
+    cursor: pointer;
+}
+.t_num{ margin:0; float:left; width: 10%; }
+.t_txt{ margin:0; float:right; width: 90%; }
+ </style>
+<body>
+<div id="closeWrap">
+	<div class="closeArea">
+		<p>Do you want to close the application?</p>
+		<button class="btn btn-lg btn3d" id="closeYes">Yes</button>
+		<button class="btn btn-lg btn3d" id="closeNo">No</button>
+	</div>
+</div>  
+ <div class="bgdiv">
+   <img src="imgs/Rope.png" class="rope fadeInRight animated"/>
+    <img src="imgs/Googals.png" class="googals fadeInUp animated"/>
+    <img src="imgs/RopeTop.png" class="ropeTop fadeInUp animated"/>
+    <img src="imgs/Map.png" class="map"/>
+    <img src="imgs/English.png" class="english  fadeInUp animated"/>
+    <img src="imgs/compass.gif" class="compass fadeInLeftBig animated"/>
+    <img src="imgs/Doorbin.png" class="doorbin fadeInRight animated" />
+    <img src="imgs/hook-top.png" class="hook-top fadeInUp animated" />
+    <img src="imgs/Googals.png" class="googals fadeInUp animated"/>
+    <img src="imgs/hook-bottom.png" class="hook-bottom fadeInDown animated" />
+    <img src="imgs/RopeBottom.png" class="ropebottom fadeInUp animated"/>
+    <img src="imgs/Bag.png" class="bag  fadeInLeft animated"/>  
+  </div>
+
+<div class="front-main uk-section">
+    <div class="uk-container">
+        <!-- <h1>REAL ENGLISH</h1> -->
+		<div class="topController">	
+<span id="activeTitle">Class 2</span>
+<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" style="float:left; cursor:pointer;" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app" src="img/close.png" />
+	</span>
+</div>
+
+
+<script>
+function toggleFullscreen(elem) {
+  elem = elem || document.documentElement;
+  if (!document.fullscreenElement && !document.mozFullScreenElement &&
+    !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+
+document.getElementById('btnFullscreen').addEventListener('click', function() {
+  toggleFullscreen();
+});
+
+document.getElementById('exampleImage').addEventListener('click', function() {
+  toggleFullscreen(this);
+});
+</script>
+
+
+           
+            <div class="front-inner" >
+			<div class="cata-list fadeInDownBig animated">
+			 <div class="cat-height">
+			 <div class="uk-fcontainer">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="scrl-name md-tab" >
+				
+                     <div class="panel-group" id="accordion">
+					 
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category6fcf.html?chapId=1&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">1. </span>
+								<span class="t_txt">A Monster in the Storeroom</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category89a5.html?chapId=2&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">2. </span>
+								<span class="t_txt">I’d Like to Be a Lighthouse</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryab52.html?chapId=3&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">3. </span>
+								<span class="t_txt">The Cracked Pot</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category57d5.html?chapId=4&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">4. </span>
+								<span class="t_txt">There Isn’t Time</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryf151.html?chapId=5&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">5. </span>
+								<span class="t_txt">Stone Soup</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						 						<div class="panel panel-default tab-click">
+						<a  href="gameae8b.html?game_id=1">
+                           <div class="panel-heading p3">  
+								  <h4 class="panel-title">
+									<span class="t_txt">Test 1</span>
+									<div style="clear:both;"></div>
+								  </h4>	                  
+                           </div> 
+						    </a>  
+                        </div>
+						 
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category3de4.html?chapId=6&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">6. </span>
+								<span class="t_txt">The Sugar-Plum Tree</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryd284.html?chapId=7&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">7. </span>
+								<span class="t_txt">Lucky Bijoy</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category5506.html?chapId=8&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">8. </span>
+								<span class="t_txt">Bed in Summer</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryff05.html?chapId=9&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">9. </span>
+								<span class="t_txt">Birbal Goes to Heaven</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category0b58.html?chapId=10&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">10. </span>
+								<span class="t_txt">Slip and Slide</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						 						<div class="panel panel-default tab-click">
+						<a  href="gamee275.html?game_id=2">
+                           <div class="panel-heading p3">  
+								  <h4 class="panel-title">
+									<span class="t_txt">Test 2</span>
+									<div style="clear:both;"></div>
+								  </h4>	                  
+                           </div> 
+						    </a>  
+                        </div>
+						 
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category201e.html?chapId=11&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">11. </span>
+								<span class="t_txt">Friends</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category96d2.html?chapId=12&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">12. </span>
+								<span class="t_txt">The Little Thief in the Pantry</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category27a2.html?chapId=13&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">13. </span>
+								<span class="t_txt">The Bremen Town Musicians</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category8c28.html?chapId=14&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">14. </span>
+								<span class="t_txt">Mr Nobody</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categorya8c2.html?chapId=15&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">15. </span>
+								<span class="t_txt">The Crystal Ball</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						 						<div class="panel panel-default tab-click">
+						<a  href="gamea305.html?game_id=3">
+                           <div class="panel-heading p3">  
+								  <h4 class="panel-title">
+									<span class="t_txt">Test 3</span>
+									<div style="clear:both;"></div>
+								  </h4>	                  
+                           </div> 
+						    </a>  
+                        </div>
+						 
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="category6e4e.html?chapId=16&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">16. </span>
+								<span class="t_txt">The Daydreamer</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryde4b.html?chapId=17&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">17. </span>
+								<span class="t_txt">The Brown Thrush</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryee88.html?chapId=18&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">18. </span>
+								<span class="t_txt">The Bear and the Kettle</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						  
+					
+                        <div class="panel panel-default tab-click">
+                            <a href="categoryb477.html?chapId=19&amp;class=2&amp;series=18">
+                           <div class="panel-heading p3">
+							  <h4 class="panel-title">
+								<span class="t_num">19. </span>
+								<span class="t_txt">How the Elephant Got Its Trunk!</span>
+								<div style="clear:both;"></div>
+                              </h4>
+                           </div>  
+                           </a>
+                        </div>
+                         
+						 						<div class="panel panel-default tab-click">
+						  <a  href="game33ef.html?game_id=4">
+                           <div class="panel-heading p3"> 
+									 <h4 class="panel-title">
+										<span class="t_txt">Test 4</span>
+										<div style="clear:both;"></div>
+									 </h4>                	
+                           </div> 
+						    </a>  
+                        </div>
+						                        
+                     </div>
+                  </div>
+               </div>
+			   </div>
+				</div>
+			</div>
+			
+			
+			
+              
+            </div>
+         </div>
+      </div>
+	  <img src='imgs/vivaLogo.png' class="footerLogo" />
+   </body>
+  <!--  <script src='js/jquery.min.js'></script> -->
+   <script src='js/jquery-ui.min.js'></script>
+   <script src='js/jquery.ui.touch-punch.min.js'></script>
+   <script src="js/bootstrap.min.js"></script>
+   <!--script type="text/javascript" src="js/coustom-controller.js"></script-->
+   <script  src="js/index.js"></script>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/front.php by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:22:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

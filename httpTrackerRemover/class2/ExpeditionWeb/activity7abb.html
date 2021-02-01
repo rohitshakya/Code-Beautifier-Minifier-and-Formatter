@@ -1,0 +1,726 @@
+ <!DOCTYPE html>
+<html>
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=5&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:32:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Expedition </title>
+ <link rel="stylesheet" href="css/wordsearch.min.css" />
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel='stylesheet' href='css/jquery-ui.css'>
+ <link rel="stylesheet" href="css/Animate.css"> 
+ <link rel="stylesheet" href="css/box_style.css" />
+ <link rel="stylesheet" href="css/responsive.css">
+ <link rel="stylesheet" href="css/all.css" />
+ <!--script src="js/jquery-2.2.4.min.js"></script-->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquerysession.js"></script>
+<script type="text/javascript">document.documentElement.webkitRequestFullScreen();</script>
+<script type="text/javascript">
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "no";
+}
+//var newJQuery = jQuery.noConflict(true);
+</script>
+</head>
+
+<div style="display:none;">
+<audio id="au" controls loop>
+     <source src="uploads/bgmusic/bgSnd.ogg">
+    <source src="uploads/bgmusic/bgSnd.mp3">
+</audio> 
+</div>
+
+<script>
+//$("audio").prop('muted', true);
+$(document).ready(function() {
+  $("#mute-audio").click( function (){  
+    if( $("audio").prop('muted') ) {
+          $("audio").prop('muted', false);
+		  $(this).attr('src', 'img/mt.png');
+        document.cookie = "soundis=play";
+        $("#au")[0].play();
+    } else {
+      $("audio").prop('muted', true);
+	  $(this).attr('src', 'img/mtu.png');
+      document.cookie = "soundis=pause";
+    }
+  });	
+ }); 
+</script>
+
+<script>
+$(document).ready(function() {  
+  var soundis = getCookie("soundis"); 
+  if(soundis=='no')
+  {
+    document.cookie = "soundis=play";
+    $("#au")[0].play();
+  }
+else
+{
+   if(soundis=='play')
+ {
+    $("#au")[0].play();
+    $("#mute-audio").attr('src', 'img/mt.png');
+ }  
+ else
+ {
+  $("#au")[0].pause();
+  $("#mute-audio").attr('src', 'img/mtu.png');
+ }
+}
+
+$("#close-app").click(function(){
+		$('#closeWrap').css('display','block');	
+});
+$("#closeYes").click(function(){
+		window.close();	
+});
+$("#closeNo").click(function(){
+		$('#closeWrap').css('display','none');	
+});
+
+});
+</script>  <style>
+.bgchnage{
+	background: #fda115 ! important;	
+}
+.round-section {
+    background: #f99600 ! important;   
+}
+.popup-overlay {
+	visibility: hidden;
+	position: absolute;
+	width: 50%;
+	height: 20%;
+	left: 25%;
+	top: 40%;
+}
+.popup-overlay.active {
+	visibility: visible;
+	text-align: center;
+}
+.popup-content {
+	visibility: hidden;
+}
+.popup-content.active {
+	visibility: visible;
+}
+button.close {
+	-webkit-appearance: none;
+	padding: 3px 5px 2px 5px;
+	cursor: pointer;
+	background: 0 0;
+	border: 1px solid #ce0000;
+	opacity: 0.9;
+	border-bottom: 0px;
+	background-color: red;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 1px 0 #fff;
+}
+.top_title {
+	text-align: center;
+	font-size: 27px;
+	font-weight: 800;
+	color: #ffffff;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+.tf {
+	display: none;
+}
+.wrongcross:after {
+	content: "X";
+	float: right;
+	color: red;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 23px;	
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.rightcross:after {
+	content: "✔";
+	float: right;
+	color: green;
+	background-color: #fff;
+	border-radius: 13px;
+	width: 25px;
+	height: 25px;
+	line-height: 28px;	
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+    right: 5px;
+    //bottom: 6px;
+}
+.w3-section,
+.w3-code {
+	margin-top: 10px!important;
+}
+.w3-circle {
+	border-radius: 50%;
+}
+.w3-xlarge {
+	font-size: 24px!important;
+}
+.w3-btn,
+.w3-button {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 6px;
+	background: #ffcc33;
+	border-radius: 50%;
+	color: #9f5922;
+	height: 45px;
+	width: 45px;
+	border: 1px solid #FFF;
+}
+.fas-icon {
+	font-size: 25px;
+}
+i.fas-icon.fas {
+	color: #663300;
+}
+i.fas {
+	font-size: 25px !important;
+}
+.round-section {
+	background: #b22e63;
+	display: inline-block;
+	padding: 8px 10px 8px 10px;
+	border-radius: 40px 40px;
+}
+.FibErr,
+.FibErr2 {
+	margin: -5px 100px;
+	font-size: 16px;
+	background-color: #f98282;
+	color: #fff;
+	padding: 10px;
+	display: none;
+	position: absolute;
+	bottom: 19%;
+	left: 27%;
+}
+</style>
+<script> 
+ var can_mch;
+ var can_mcq;
+ var can_fib;
+ var can_tnf;
+ var cc;
+ var keyVal=null;
+  var cc = '';
+ var wordList  ;
+ var typing = [];
+ var matchArr = {"data":""}</script>
+<link rel="stylesheet" href="css/fill-in.css">
+<link href="css/matchgame.css" rel="stylesheet" />
+<style>
+	body {
+		background-image: url('imgs/1200.jpg');
+	}
+	#close-app2 {
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;    
+    margin-left: 2px;
+    cursor: pointer;
+}
+.fullScrn{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    margin-top: 2px;   
+    margin-left: 2px;
+    cursor: pointer;
+}
+</style>
+   <body id="exampleImage">
+<div class="topController">	
+	<span id="activeTitle">Class 2</span>
+	<span id="topBtns">
+		<img id="mute-audio" src="img/mt.png" />
+		<a class="fullScrn" href="javascript:phpdesktop.ToggleFullscreen()"><img src="img/fs.png" /></a>
+		<img id="close-app2" src="img/close.png" />
+	</span>	
+</div>
+     <!-- <a class="btn btn-primary btn-lg gradient custmz-btn" id="openmenu" >Go Back</a> -->
+	       <section id="menu-optn" class="uk-section vk-activity hidden" >
+         <div class="uk-container">
+         	<a href="javascript:history.back()" class="backButton"><img src="imgs/back.png"></a>
+            <h1><!-- Quiz Menu --></h1>
+                        <div class="row row-flex activity-auto mt40">
+	            </div>
+         </div>
+         </div>
+      </section>
+	 	 
+<script>
+var cat_type = '["fib","fib2"]';
+var ArrCat = JSON.parse(cat_type);
+</script>	
+
+	<!-- -------------- Fill IN THE BLANKS ---------------- -->
+	<section class="data-list uk-section vk-activity"  id="fib">
+        <div class="uk-container bgchnage">
+		<span class="top_title">5.  Stone Soup</span>
+		<a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+		  <!-- <h1 class="bounceInRight animated"> Fill IN THE BLANKS </h1>-->
+            <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Click the correct answer.</h4>
+               <div id="fillBox">			   
+				<script>var fibL=5</script>				<div class="first-div">
+				 <div class="fill-qu">
+				My sister				<!--span class="divLine" id="div5397" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5397"></span>
+				me stories about my childhood.				<input type="hidden" id="ans_5397" value="tells" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_53971" class="bounceInLeft animated">
+										<span id="drag53971"  onClick="dragWrng(event)">says</span>
+										</li>	
+								    <li id="d_53972" class="bounceInLeft animated">
+										<!--span id="drag53972"  draggable="true" onClick="dragtrue('53972')" ondragstart="drag(event)" >tells</span-->
+					<span id="drag53972" onClick="dragtrue('53972', '5397')">tells</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5397">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				Sarah				<!--span class="divLine" id="div5399" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5399"></span>
+				the same question again and again.				<input type="hidden" id="ans_5399" value="asked" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_53991" class="bounceInLeft animated">
+										<span id="drag53991"  onClick="dragWrng(event)">said</span>
+										</li>	
+								    <li id="d_53992" class="bounceInLeft animated">
+										<!--span id="drag53992"  draggable="true" onClick="dragtrue('53992')" ondragstart="drag(event)" >asked</span-->
+					<span id="drag53992" onClick="dragtrue('53992', '5399')">asked</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5399">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				&#39;Would you like to stay in this room?&rsquo;				<!--span class="divLine" id="div5402" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5402"></span>
+				the manager.				<input type="hidden" id="ans_5402" value="asked" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_54021" class="bounceInLeft animated">
+										<span id="drag54021"  onClick="dragWrng(event)">told</span>
+										</li>	
+								    <li id="d_54022" class="bounceInLeft animated">
+										<!--span id="drag54022"  draggable="true" onClick="dragtrue('54022')" ondragstart="drag(event)" >asked</span-->
+					<span id="drag54022" onClick="dragtrue('54022', '5402')">asked</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5402">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				&lsquo;Please allow me to fill the form,&rsquo;				<!--span class="divLine" id="div5406" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5406"></span>
+				the old lady.				<input type="hidden" id="ans_5406" value="requested" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_54061" class="bounceInLeft animated">
+										<span id="drag54061"  onClick="dragWrng(event)">told</span>
+										</li>	
+								    <li id="d_54062" class="bounceInLeft animated">
+										<!--span id="drag54062"  draggable="true" onClick="dragtrue('54062')" ondragstart="drag(event)" >requested</span-->
+					<span id="drag54062" onClick="dragtrue('54062', '5406')">requested</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="5406">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;">
+				 <div class="fill-qu">
+				The teacher				<!--span class="divLine" id="div5409" ondrop="drop(event)" ondragover="allowDrop(event)"></span-->
+				<span class="divLine" id="div5409"></span>
+				that we can play in the ground.				<input type="hidden" id="ans_5409" value="says" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_54091" class="bounceInLeft animated">
+										<!--span id="drag54091"  draggable="true" onClick="dragtrue('54091')" ondragstart="drag(event)" >says</span-->
+					<span id="drag54091" onClick="dragtrue('54091', '5409')">says</span>
+										</li>	
+								    <li id="d_54092" class="bounceInLeft animated">
+										<span id="drag54092"  onClick="dragWrng(event)">asks</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   				<div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+			</div>  
+		        </section>
+	
+	
+<!-- ----------------------Fill IN THE BLANKS (Drag & Drop)--- -->
+	<section class="data-list uk-section vk-activity"  id="fib2">
+        <div class="uk-container bgchnage">
+		     <span class="top_title">5.  Stone Soup</span>
+		     <a href="javascript:window.history.go(-1)" class="backButton"><img src="imgs/back.png"></a>
+	                <div class="fillin-box">
+			   <h4 style="text-align:center;font-weight:800;">Drag the correct option and drop it in the blank.</h4>
+               <div id="fillBox">			   
+				<script>var fibL2=6</script>				<div class="first-div"">
+				 <div class="fill-qu">
+				Manisha				<span class="divLine" id="div6800" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6800"></span-->
+				that we can call her anytime.				<input type="hidden" id="ans_6800" value="says" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68001" class="bounceInLeft animated">
+										<span id="drag68001"  draggable="true" ondragstart="drag(event)" >says</span>
+					<!--span id="drag68001" onClick="dragtrue('68001', '6800')">says</span-->
+										</li>	
+								    <li id="d_68002" class="bounceInLeft animated">
+										<span id="drag68002"  draggable="true" ondragstart="dragWrng2(event)">tells</span>
+										</li>	
+								    <li id="d_68003" class="bounceInLeft animated">
+										<span id="drag68003"  draggable="true" ondragstart="dragWrng2(event)">asks</span>
+										</li>	
+								</ul>
+				  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6800">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				&lsquo;Please pass my jacket,&rsquo;				<span class="divLine" id="div6801" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6801"></span-->
+				the gentleman.				<input type="hidden" id="ans_6801" value="requested" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68011" class="bounceInLeft animated">
+										<span id="drag68011"  draggable="true" ondragstart="drag(event)" >requested</span>
+					<!--span id="drag68011" onClick="dragtrue('68011', '6801')">requested</span-->
+										</li>	
+								    <li id="d_68012" class="bounceInLeft animated">
+										<span id="drag68012"  draggable="true" ondragstart="dragWrng2(event)">replied</span>
+										</li>	
+								    <li id="d_68013" class="bounceInLeft animated">
+										<span id="drag68013"  draggable="true" ondragstart="dragWrng2(event)">told</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6801">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				She was punished for				<span class="divLine" id="div6802" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6802"></span-->
+				a lie.				<input type="hidden" id="ans_6802" value="telling" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68021" class="bounceInLeft animated">
+										<span id="drag68021"  draggable="true" ondragstart="dragWrng2(event)">saying</span>
+										</li>	
+								    <li id="d_68022" class="bounceInLeft animated">
+										<span id="drag68022"  draggable="true" ondragstart="dragWrng2(event)">requesting</span>
+										</li>	
+								    <li id="d_68023" class="bounceInLeft animated">
+										<span id="drag68023"  draggable="true" ondragstart="drag(event)" >telling</span>
+					<!--span id="drag68023" onClick="dragtrue('68023', '6802')">telling</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6802">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				Natasha suddenly				<span class="divLine" id="div6803" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6803"></span-->
+				to the question.				<input type="hidden" id="ans_6803" value="replied" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68031" class="bounceInLeft animated">
+										<span id="drag68031"  draggable="true" ondragstart="dragWrng2(event)">asked</span>
+										</li>	
+								    <li id="d_68032" class="bounceInLeft animated">
+										<span id="drag68032"  draggable="true" ondragstart="drag(event)" >replied</span>
+					<!--span id="drag68032" onClick="dragtrue('68032', '6803')">replied</span-->
+										</li>	
+								    <li id="d_68033" class="bounceInLeft animated">
+										<span id="drag68033"  draggable="true" ondragstart="dragWrng2(event)">said</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6803">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				&lsquo;Would you like to have snacks?&rsquo;				<span class="divLine" id="div6804" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6804"></span-->
+				the lady.				<input type="hidden" id="ans_6804" value="asked" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68041" class="bounceInLeft animated">
+										<span id="drag68041"  draggable="true" ondragstart="dragWrng2(event)">told</span>
+										</li>	
+								    <li id="d_68042" class="bounceInLeft animated">
+										<span id="drag68042"  draggable="true" ondragstart="dragWrng2(event)">requested</span>
+										</li>	
+								    <li id="d_68043" class="bounceInLeft animated">
+										<span id="drag68043"  draggable="true" ondragstart="drag(event)" >asked</span>
+					<!--span id="drag68043" onClick="dragtrue('68043', '6804')">asked</span-->
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+				<button class="next btn btn-lg custmz-btn-nxt custmz2" id="6804">Next</button>
+				<p class="FibErr">You have not attempted this question correctly.</p>
+								</div>
+								<div class="next-div" style="display:none;"">
+				 <div class="fill-qu">
+				&lsquo;I am going to the park,&#39;				<span class="divLine" id="div6805" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+				<!--span class="divLine" id="div6805"></span-->
+				Avantika.				<input type="hidden" id="ans_6805" value="said" />
+				</div>
+				<br>
+				<ul class="fillin-ul shuffle-list-items">
+								    <li id="d_68051" class="bounceInLeft animated">
+										<span id="drag68051"  draggable="true" ondragstart="dragWrng2(event)">told</span>
+										</li>	
+								    <li id="d_68052" class="bounceInLeft animated">
+										<span id="drag68052"  draggable="true" ondragstart="drag(event)" >said</span>
+					<!--span id="drag68052" onClick="dragtrue('68052', '6805')">said</span-->
+										</li>	
+								    <li id="d_68053" class="bounceInLeft animated">
+										<span id="drag68053"  draggable="true" ondragstart="dragWrng2(event)">requested</span>
+										</li>	
+								</ul>
+				<button class="back btn btn-lg btn3d custmz-btn-back custmz2">Back</button>  
+								</div>
+				                </div>
+                 </div>
+               <div id="result"></div>
+			   
+		      
+			  <div class="w3-section">
+				   <span class="activity-title">Vocabulary</span>
+				   				   		<div class="round-section">
+				   									<script>can_fib='fib';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">1</i>              
+													</div>
+												 </a>			   
+															<script>can_fib2='fib2';</script>
+											    <a class="box-a f-left w3-button w3-large w3-circle w3-xlarge w3-ripple w3-black f-left" data-target='#fib2' href="javascript:void(0)">
+													<div class="">						
+														<i class="fas-icon fas">2</i>              
+													</div>
+												 </a>			   
+										 </div>				   
+                 <a href="front.html" class="homeButton"><img src="imgs/homebutton.png"></a>
+				</div>
+				</div>
+				
+			</div>	
+	  </section>  
+	  
+	  
+ 
+	  
+	  
+ 
+	
+ 
+
+<script>var tyL=0</script>	  
+
+	
+<script>
+	   var subcontainers = []	   
+	   var dragCorrect = []	   
+	   var answers = []</script>
+
+	
+	
+<div class="uk-container" id="resultt" style="display:none;">
+<div class="score-box bounce animated"> 
+  <div class="rslt-box bounce animated">
+    <div class="rslt-img">
+	  <a href="javascript:location.reload();"><img src="imgs/score.png" style="width:100%;"></a>
+	  <a class="playBack" href="categoryf151.html?chapId=5&amp;class=2&amp;series=18" class=""><img src="imgs/back.png"></a>
+	  		
+		<a class="playNext" id="nextExc">Next Exercise</a>
+	      </div>   
+  </div>
+  </div>
+</div>	
+</body>
+<script>
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+$(".close").on("click", function(){
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>	  
+<script type="text/javascript">
+      $(document).ready(function () {
+    $('.material-button-toggle').on("click", function () {
+        $(this).toggleClass('open');
+        $('.option').toggleClass('scale-on');
+    });
+});
+</script>
+<script type="text/javascript">
+   var allQuestions = [];
+   var allQuestions1 = [];
+    function allowDrop(ev){
+             ev.preventDefault();
+           }
+           function drag(ev){
+             ev.dataTransfer.setData("Text",ev.target.id);
+           }
+		   function dragWrng(ev){
+             var dropWrng = ev.target.id.replace('drag', '');
+			 //$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			 $( "#drag"+dropWrng ).addClass('wrongcross'); 
+           }
+		   function dragWrng2(ev){
+            var dropWrng = ev.target.id.replace('drag', '');
+			//$( "#d_"+dropWrng ).attr( "style", "background-color:#ff6363 ! important" );
+			setTimeout(function(){ $( "#drag"+dropWrng ).addClass('wrongcross'); },1000);
+           }
+           function drop(ev){
+             ev.preventDefault();
+             var data=ev.dataTransfer.getData("Text");
+             ev.target.parentNode.replaceChild(document.getElementById(data), ev.target);
+             document.getElementById(data).className = "";
+           }
+</script> 
+<img src='imgs/vivaLogo.png' class="footerLogo"><script src='js/jquery-ui.min.js'></script>
+<script src='js/jquery.ui.touch-punch.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/coustom-controller.js"></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" language="javascript" src="js/matchgame.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/wordsearch.js"></script> 
+ 
+<script type="text/javascript">	
+	var lastactive = getCookie("lastactive"); 
+	if(lastactive == "no" || lastactive==''){
+		$('#fib').css('display', 'block');
+		$("a[data-target='#fib']").css('opacity','0.5');
+	}else{
+		$('#'+lastactive).css('display', 'block');
+		$("a[data-target='#" + lastactive + "']").css('opacity','0.5');
+	}
+	document.cookie = "lastactive=";
+	$('#nextExc').click(function(){
+		document.cookie = "lastactive="+getCookie('nextactive');
+		location.reload();
+	});
+	/**
+	$(document).ready(function(){        
+        $('.round-section').click(function(){
+            $('.w3-button').attr('style', 'background-color:#ffcc33');
+            $(this).attr('style', 'background-color:red');
+        });
+	});
+	**/
+		 /*
+     * shuffles the array     
+     */
+	$.fn.shufflelistitems = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+ 
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+ 
+        $el.empty();
+        $find.appendTo($el);
+    });
+	};	
+	$(".shuffle-list-items").shufflelistitems();
+	$.fn.jquery
+</script>
+
+
+<!-- Mirrored from lotus.vivadigitalindia.net/VivaApp/ExpeditionWeb/class2/activity.php?chapId=5&catId=2&class=2&series=18 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 01 Feb 2021 07:32:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,24 @@
+@font-face {
+	  font-family: crosswordFont;
+	
+	  src: url('fnts/Crossword_0.ttf');
+	}	
+	@font-face {
+	  font-family: calibriFont_R;
+
+	  src: url('fnts/calibriR.ttf');
+	}
+	@font-face {
+	  font-family: calibriFont_I;
+	  src: url('fnts/calibriI.ttf');
+	}
+	@font-face {
+	  font-family: calibriFont_B; 	 
+	  src: url('fnts/calibriB.ttf');
+	}
+	@font-face {
+	  font-family: calibriFont_BI;
+	  src: url('fnts/calibriBI.ttf');
+	}
+
+body{font-family:  calibriFont_R !important;}
